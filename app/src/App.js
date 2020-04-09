@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './Header';
 
 function App() {
-  let counter = 0;
-
+  const [counter, setCounter] = useState(0);
+/** o useState ele manipula os valores atualizando o estado do valor anteriormente utilizando
+* um array[valor, atualizacao], com isso podemos usar uma constante preservando a imutabilidade dela
+**/
   function increment(){
-    counter += 1;
-    console.log(counter);
+    setCounter(counter + 1);
   }
 
   return (
