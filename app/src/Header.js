@@ -5,8 +5,7 @@ function Header({children}){
      * o que esta sendo passado para o componente onde ele esta sendo usado
      * */
     return(
-        <header>
-            
+        <header>           
             <h1>{children}</h1>
         </header>
     );
