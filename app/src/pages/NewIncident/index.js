@@ -24,7 +24,7 @@ export default function NewIncident(){
                     <input placeholder="Título do caso" />
                     <textarea placeholder="Descrição"/>
                     <input placeholder="Valor em reais"/>
-                    <button className="button">Cancelar</button>
+                    <button className="button button-cancel">Cancelar</button>
                     <button className="button" type="submit">Cadastrar</button>
 
                 </form>
