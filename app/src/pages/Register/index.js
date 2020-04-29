@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
 
-import api from '../../service/api';
+import api from '../../services/api';
 import './style.css';
 import logo from '../../assets/logo.svg';
 
@@ -10,22 +10,28 @@ export default function Register(){
     
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [whatsApp, setWhatsApp] = useState('');
+    const [whatsapp, setWhatsApp] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUF] = useState('');
     
-    function handleRegister(event){
+    async function handleRegister(event){
         event.preventDefault();
 
         const data ={
             name,
             email,
-            whatsApp,
+            whatsapp,
             city,
             uf,
         };
 
-        api.post('ongs', data);
+        try{
+            const response = await api.post('ongs', data);
+            
+            alert(`Seu ID de acesso: ${response.data.id}`);
+        } catch(error){
+            alert('Erro no cadastro, tente novamente.');
+        }
     }
     
 
@@ -53,7 +59,7 @@ export default function Register(){
                         onChange={event => setEmail(event.target.value)}
                     />
                     <input placeholder="WhatsApp"
-                        value={whatsApp}
+                        value={whatsapp}
                         onChange={event => setWhatsApp(event.target.value)}
                     />
 
