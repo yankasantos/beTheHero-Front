@@ -10,14 +10,21 @@ import heroesImg from '../../assets/heroes.png';
 export default function Logon(){
     
     const [id, setId] = useState('');
+    const history = useHistory('');
     
     async function handleLogin(event){
         event.preventDefault();
 
         try{
             const response = await api.post('sessions', { id });
-            alert(`Seja bem-vindo ${response.data.name}!`);
+            // alert(`Seja bem-vindo ${response.data.name}!`
+            localStorage.setItem('ongId', id);
+            localStorage.setItem('ongName', response.data.name);
+
+            history.push('/profile');
             
+
+
         }catch(error){     
             alert(`o id não foi encontrado`);
         }
