@@ -38,7 +38,7 @@ export default function Profile(){
 
             <ul>
                 {incidents.map(incidents => (
-                    <li>
+                    <li key={incidents.id}>
                         <strong>Caso: </strong>
                         <p>{incidents.title}</p>
 
@@ -46,7 +46,7 @@ export default function Profile(){
                         <p>{incidents.description}e</p>
 
                         <strong>VALOR: </strong>
-                        <p>R${incidents.value}</p>
+                        <p>{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
                         <button>
                             <FiTrash2 size="20" color="#a8a8b3" />
                         </button>
