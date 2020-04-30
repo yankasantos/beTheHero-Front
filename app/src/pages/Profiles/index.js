@@ -21,6 +21,19 @@ export default function Profile(){
         })
     } , [ongId]);
 
+    async function handleDeleteIncident(id){
+        try{
+            await api.delete(`incidents/${id}`,{
+                headers:{
+                    Authorization:ongId,
+                }
+            });
+
+            setIncidents(incidents.filter(incidents => incidents.id != id));
+        }catch(error){
+            alert('Erro ao deletar, tente novamente');
+        }
+    };
    
 
     return(
@@ -47,7 +60,7 @@ export default function Profile(){
 
                         <strong>VALOR: </strong>
                         <p>{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
-                        <button>
+                        <button onClick={() => handleDeleteIncident(incidents.id)}>
                             <FiTrash2 size="20" color="#a8a8b3" />
                         </button>
                     </li>
