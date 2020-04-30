@@ -21,9 +21,7 @@ export default function Logon(){
             localStorage.setItem('ongId', id);
             localStorage.setItem('ongName', response.data.name);
 
-            history.push('/profile');
-            
-
+            history.push('/profile');            
 
         }catch(error){     
             alert(`o id não foi encontrado`);
